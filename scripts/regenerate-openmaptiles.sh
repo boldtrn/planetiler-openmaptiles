@@ -4,10 +4,10 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-TAG="${1:-"v3.14"}"
+TAG="${1:-"planetiler_v2"}"
 echo "tag=${TAG}"
 
-BASE_URL="${2:-"https://raw.githubusercontent.com/openmaptiles/openmaptiles/"}"
+BASE_URL="${2:-"https://raw.githubusercontent.com/boldtrn/openmaptiles/"}"
 echo "base-url=${BASE_URL}"
 
 echo "Building..."
