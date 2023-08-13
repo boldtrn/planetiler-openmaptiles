@@ -86,10 +86,12 @@ public class Poi implements
 
     entry("motorcycle_parking", 60),
     entry("parking", 61),
+
+    entry("lodging", 68),
     entry(FieldValues.CLASS_CAMPSITE, 69),
+
     entry(FieldValues.CLASS_ATTRACTION, 70),
-    entry(FieldValues.CLASS_RAILWAY, 71),
-    entry(FieldValues.CLASS_BUS, 72),
+
     entry(FieldValues.CLASS_HARBOR, 75),
     entry(FieldValues.CLASS_COLLEGE, 80),
     entry(FieldValues.CLASS_SCHOOL, 85),
@@ -106,7 +108,9 @@ public class Poi implements
     entry(FieldValues.CLASS_GROCERY, 500),
     entry(FieldValues.CLASS_FAST_FOOD, 600),
     entry(FieldValues.CLASS_CLOTHING_STORE, 700),
-    entry(FieldValues.CLASS_BAR, 800)
+    entry(FieldValues.CLASS_BAR, 800),
+    entry(FieldValues.CLASS_RAILWAY, 1000),
+    entry(FieldValues.CLASS_BUS, 1100)
   );
   private final MultiExpression.Index<String> classMapping;
   private final Translations translations;
@@ -129,9 +133,13 @@ public class Poi implements
   }
 
   private int minzoom(String subclass, String mappingKey) {
-    boolean lowZoom = ("station".equals(subclass) && "railway".equals(mappingKey)) ||
-      "halt".equals(subclass) || "ferry_terminal".equals(subclass);
-    return lowZoom ? 12 : 14;
+    if ("fuel".equals(subclass)) {
+      return 11;
+    } else if (("station".equals(subclass) && "railway".equals(mappingKey)) ||
+      "halt".equals(subclass) || "ferry_terminal".equals(subclass)) {
+      return 12;
+    }
+    return 14;
   }
 
   @Override
