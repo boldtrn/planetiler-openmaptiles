@@ -91,8 +91,18 @@ public class Poi implements
   private static final Logger LOGGER = LoggerFactory.getLogger(Poi.class);
   private static final Map<String, Integer> CLASS_RANKS = Map.ofEntries(
     entry(FieldValues.CLASS_HOSPITAL, 20),
-    entry(FieldValues.CLASS_RAILWAY, 40),
-    entry(FieldValues.CLASS_BUS, 50),
+    entry("toll_booth", 51),
+    entry("barrier", 52),
+    entry("gate", 53),
+    entry("lift_gate", 54),
+    entry("swing_gate", 55),
+
+    entry("motorcycle_parking", 60),
+    entry("parking", 61),
+
+    entry("lodging", 68),
+    entry(FieldValues.CLASS_CAMPSITE, 69),
+
     entry(FieldValues.CLASS_ATTRACTION, 70),
     entry(FieldValues.CLASS_HARBOR, 75),
     entry(FieldValues.CLASS_COLLEGE, 80),
@@ -100,7 +110,6 @@ public class Poi implements
     entry(FieldValues.CLASS_STADIUM, 90),
     entry("zoo", 95),
     entry(FieldValues.CLASS_TOWN_HALL, 100),
-    entry(FieldValues.CLASS_CAMPSITE, 110),
     entry(FieldValues.CLASS_CEMETERY, 115),
     entry(FieldValues.CLASS_PARK, 120),
     entry(FieldValues.CLASS_LIBRARY, 130),
@@ -111,7 +120,9 @@ public class Poi implements
     entry(FieldValues.CLASS_GROCERY, 500),
     entry(FieldValues.CLASS_FAST_FOOD, 600),
     entry(FieldValues.CLASS_CLOTHING_STORE, 700),
-    entry(FieldValues.CLASS_BAR, 800)
+    entry(FieldValues.CLASS_BAR, 800),
+    entry(FieldValues.CLASS_RAILWAY, 1000),
+    entry(FieldValues.CLASS_BUS, 1100)
   );
   private static final Set<String> UNIVERSITY_POI_SUBCLASSES = Set.of("university", "college");
   private static final List<String> AGG_STOP_SUBCLASS_ORDER = List.of(
@@ -152,9 +163,13 @@ public class Poi implements
   }
 
   private int minzoom(String subclass, String mappingKey) {
-    boolean lowZoom = ("station".equals(subclass) && "railway".equals(mappingKey)) ||
-      "halt".equals(subclass) || "ferry_terminal".equals(subclass);
-    return lowZoom ? 12 : 14;
+    if ("fuel".equals(subclass)) {
+      return 10;
+    } else if (("station".equals(subclass) && "railway".equals(mappingKey)) ||
+        "halt".equals(subclass) || "ferry_terminal".equals(subclass)) {
+      return 12;
+    }
+    return 14;
   }
 
   @Override

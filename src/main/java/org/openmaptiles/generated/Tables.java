@@ -50,8 +50,8 @@ import java.util.Map;
 
 /**
  * OSM element parsers generated from the <a href="https://github.com/omniscale/imposm3">imposm3</a> table definitions
- * in the <a href="https://github.com/openmaptiles/openmaptiles/blob/master/openmaptiles.yaml">OpenMapTiles vector tile
- * schema</a>.
+ * in the <a href="https://github.com/openmaptiles/openmaptiles/blob/planetiler_v3/openmaptiles.yaml">OpenMapTiles
+ * vector tile schema</a>.
  *
  * These filter and parse the raw OSM key/value attribute pairs on tags into records with fields that match the columns
  * in the tables that imposm3 would generate. Layer implementations can "subscribe" to elements from each "table" but
@@ -153,8 +153,8 @@ public class Tables {
 
     /** Imposm3 "mapping" to filter OSM elements that should appear in this "table". */
     public static final Expression MAPPING = and(or(
-      matchAny("landuse", "allotments", "farm", "farmland", "orchard", "flowerbed", "plant_nursery", "vineyard",
-        "grass", "grassland", "meadow", "forest", "village_green", "recreation_ground"),
+      matchAny("landuse", "allotments", "farm", "farmland", "orchard", "plant_nursery", "vineyard", "grass",
+        "grassland", "meadow", "forest", "village_green", "recreation_ground"),
       matchAny("natural", "wood", "wetland", "fell", "grassland", "heath", "scrub", "shrubbery", "tundra", "glacier",
         "bare_rock", "scree", "beach", "sand", "dune"),
       matchAny("leisure", "park", "garden", "golf_course"), matchAny("wetland", "bog", "swamp", "wet_meadow", "marsh",
@@ -737,7 +737,7 @@ public class Tables {
         "swimming_pool", "taxi", "telephone", "theatre", "toilets", "townhall", "university", "veterinary",
         "waste_basket"),
       matchAny("barrier", "bollard", "border_control", "cycle_barrier", "gate", "lift_gate", "sally_port", "stile",
-        "toll_booth"),
+        "toll_booth", "swing_gate", "block"),
       matchAny("building", "dormitory"), matchAny("highway", "bus_stop"),
       matchAny("historic", "monument", "castle", "ruins"),
       matchAny("landuse", "basin", "brownfield", "cemetery", "reservoir", "winter_sports"),
@@ -816,7 +816,7 @@ public class Tables {
         "swimming_pool", "taxi", "telephone", "theatre", "toilets", "townhall", "university", "veterinary",
         "waste_basket"),
       matchAny("barrier", "bollard", "border_control", "cycle_barrier", "gate", "lift_gate", "sally_port", "stile",
-        "toll_booth"),
+        "toll_booth", "swing_gate", "block"),
       matchAny("building", "dormitory"), matchAny("highway", "bus_stop"),
       matchAny("historic", "monument", "castle", "ruins"),
       matchAny("landuse", "basin", "brownfield", "cemetery", "reservoir", "winter_sports"),
