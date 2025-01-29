@@ -91,6 +91,7 @@ public class Poi implements
   private static final Logger LOGGER = LoggerFactory.getLogger(Poi.class);
   private static final Map<String, Integer> CLASS_RANKS = Map.ofEntries(
     entry(FieldValues.CLASS_HOSPITAL, 20),
+    entry("fuel", 40),
     entry("toll_booth", 51),
     entry("barrier", 52),
     entry("gate", 53),
@@ -121,7 +122,8 @@ public class Poi implements
     entry(FieldValues.CLASS_FAST_FOOD, 600),
     entry(FieldValues.CLASS_CLOTHING_STORE, 700),
     entry(FieldValues.CLASS_BAR, 800),
-    entry(FieldValues.CLASS_RAILWAY, 1000),
+    // Default is 1000, so these are below the default
+    entry(FieldValues.CLASS_RAILWAY, 1050),
     entry(FieldValues.CLASS_BUS, 1100)
   );
   private static final Set<String> UNIVERSITY_POI_SUBCLASSES = Set.of("university", "college");
