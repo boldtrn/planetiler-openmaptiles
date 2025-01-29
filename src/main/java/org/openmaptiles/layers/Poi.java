@@ -92,6 +92,7 @@ public class Poi implements
   private static final Map<String, Integer> CLASS_RANKS = Map.ofEntries(
     entry(FieldValues.CLASS_HOSPITAL, 20),
     entry("fuel", 40),
+    entry("charging_station", 41),
     entry("toll_booth", 51),
     entry("barrier", 52),
     entry("gate", 53),
