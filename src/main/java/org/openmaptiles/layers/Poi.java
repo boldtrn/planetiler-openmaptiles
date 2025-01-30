@@ -168,8 +168,8 @@ public class Poi implements
   private int minzoom(String subclass, String mappingKey) {
     if ("fuel".equals(subclass)) {
       return 10;
-    } else if (("station".equals(subclass) && "railway".equals(mappingKey)) ||
-        "halt".equals(subclass) || "ferry_terminal".equals(subclass)) {
+    } else if ("ferry_terminal".equals(subclass)) {
+      // only lift ferry terminal to z12
       return 12;
     }
     return 14;
