@@ -1822,7 +1822,6 @@ public class OpenMapTilesSchema {
        * <li>swimming
        * <li>castle
        * <li>atm
-       * <li>fuel
        * </ul>
        */
       public static final String CLASS = "class";
@@ -1919,11 +1918,10 @@ public class OpenMapTilesSchema {
       public static final String CLASS_SWIMMING = "swimming";
       public static final String CLASS_CASTLE = "castle";
       public static final String CLASS_ATM = "atm";
-      public static final String CLASS_FUEL = "fuel";
       public static final Set<String> CLASS_VALUES = Set.of("shop", "office", "town_hall", "golf", "fast_food", "park",
         "bus", "railway", "aerialway", "entrance", "campsite", "laundry", "grocery", "library", "college", "lodging",
         "ice_cream", "post", "cafe", "school", "alcohol_shop", "bar", "harbor", "car", "hospital", "cemetery",
-        "attraction", "beer", "music", "stadium", "art_gallery", "clothing_store", "swimming", "castle", "atm", "fuel");
+        "attraction", "beer", "music", "stadium", "art_gallery", "clothing_store", "swimming", "castle", "atm");
     }
     /** Complex mappings to generate attribute values from OSM element tags in the poi layer. */
     final class FieldMappings {
@@ -1986,8 +1984,7 @@ public class OpenMapTilesSchema {
         MultiExpression.entry("clothing_store", matchAny("subclass", "bag", "clothes")),
         MultiExpression.entry("swimming", matchAny("subclass", "swimming_area", "swimming")),
         MultiExpression.entry("castle", matchAny("subclass", "castle", "ruins")),
-        MultiExpression.entry("atm", matchAny("subclass", "atm")),
-        MultiExpression.entry("fuel", matchAny("subclass", "fuel", "charging_station"))));
+        MultiExpression.entry("atm", matchAny("subclass", "atm"))));
     }
   }
   /**
